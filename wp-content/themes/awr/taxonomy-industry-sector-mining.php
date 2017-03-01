@@ -69,7 +69,7 @@ If you are going to pay more in shipping than the cost of the product, buying qu
                 </div>
                 <div class="col-sm-4">
                     
-                    <div id="ship"><img src="<?php echo get_template_directory_uri(); ?>/images/ship.svg" alt=""></div>
+                    <div id="ship"><img src="<?php echo get_template_directory_uri(); ?>/images/mining.svg" alt=""></div>
                     
                 </div>
             </div>

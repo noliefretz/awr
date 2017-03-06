@@ -72,8 +72,12 @@
                                                 <ul>
                                                     <?php
                                                     
-                                                        $brands = get_terms(array(
+                                                        /*$brands = get_terms(array(
                                                             'taxonomy' => 'brand',
+                                                            'hide_empty' => false
+                                                        ));*/
+                                                        $brands = get_terms(array(
+                                                            'taxonomy' => 'awr-product-manufacturer',
                                                             'hide_empty' => false
                                                         ));
                                                     
@@ -313,7 +317,8 @@
                             }
 
                         	$args = array(
-                                'post_type' => 'post',
+                                /*'post_type' => 'post',*/
+                                'post_type' => 'awr-product',
                         		'post_status' => 'publish',
                                 'posts_per_page' => 6,
                                 'paged' => $paged,
@@ -335,6 +340,7 @@
                             modify_taxonomy_query($the_query);
 
                         	if( $the_query->have_posts() ){
+
                         		while( $the_query->have_posts() ){
                         			$the_query->the_post();
                                     
@@ -343,7 +349,8 @@
                                     $term_list = $term_list[0];
                                     
                                     // get model from custom field
-                        			$models = get_field('product_model');
+                        			//$models = get_field('product_model');                                    
+                                    $models = get_post_meta( get_the_ID() ,'_product_models', true);
                                     if( $models ){
                                         foreach($models as $model){
                                             $modelText .= '<option value="'.$model['model'].'">'.$model['model'].'</option>';
@@ -351,7 +358,8 @@
                                     }
                                     
                                     // get price from custom field
-                                    $price = get_field('product_price');
+                                    //$price = get_field('product_price');
+                                    $price = get_post_meta( get_the_ID() ,'_product_price', true);
                                     if( strpos($price, '.') !== false ){
                                         $priceText = explode('.',$price);
                                         $priceText = '<sup class="currency">$</sup><strong>'.$priceText[0].'</strong><sup class="ext">.'.$priceText[1].'</sup>';

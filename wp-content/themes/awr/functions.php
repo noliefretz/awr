@@ -12,7 +12,7 @@ function awr_enqueue_scripts(){
     wp_register_script('jquery', get_template_directory_uri() . '/js/jquery.min.js', array(), false, true);
     wp_register_script('skrollr', get_template_directory_uri() . '/js/skrollr.js', array(), false, true);
     wp_register_script('paraxify', get_template_directory_uri() . '/js/paraxify.min.js', array(), false, true);
-    wp_register_script('customParallax', get_template_directory_uri() . '/js/customParallax.js', array(), false, true);
+    //wp_register_script('customParallax', get_template_directory_uri() . '/js/customParallax.js', array(), false, true);
 
     wp_enqueue_script('jquery');
     wp_enqueue_script('modernizr');
@@ -340,7 +340,7 @@ add_action( 'init', 'product_brand', 0 );
 add_action( 'init', 'awr_register_menus' );
 add_action( 'wp_enqueue_scripts', 'awr_enqueue_scripts' );
 
-//add_theme_support( 'post-thumbnails' );
+add_theme_support( 'post-thumbnails' );
 add_theme_support( 'custom-logo' );
 
 ?>

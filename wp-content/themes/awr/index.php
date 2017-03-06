@@ -99,23 +99,32 @@
 
                             <?php
                                 $display = '';
+                                $d_ctr = 0;
                                 $args = array(
                                     'order' => 'ASC',
-                                    'taxonomy' => 'product-category',
+                                    'taxonomy' => 'awr-product-category',
                                     'hide_empty' => false,
-                                    'exclude' => 1
                                 );
                                 $categories = get_terms($args);
                                 foreach( $categories as $cat ){
+                                    if( $d_ctr >= 10 ){
+                                        break;
+                                    }
                                     $cat_name = $cat->name;
                                     $cat_id = $cat->term_id;
                                     $cat_link = get_term_link($cat_id);
 
-                                    if (function_exists('z_taxonomy_image_url')){
+                                    /*if (function_exists('z_taxonomy_image_url')){
                                         $cat_img_url = z_taxonomy_image_url($cat_id,'thumbnail');
                                     }
                                     else{
                                         $cat_img_url = get_template_directory_uri.'/images/no-image.jpg';
+                                    }*/
+                                    $product_cat_img = get_term_meta( $cat_id, '_taxonomy_image', true );
+                                    if( !empty( $product_cat_img) ){
+                                        $cat_img_url = $product_cat_img;
+                                    }else{
+                                        $cat_img_url = get_template_directory_uri().'/images/no-image.jpg';
                                     }
 
                                     $display .= '
@@ -128,6 +137,8 @@
                                         </div>
 
                                     ';
+                                    $d_ctr ++;
+
 
                                 }
 

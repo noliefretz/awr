@@ -68,7 +68,7 @@
                 </div>
                 <div class="col-sm-4">
                     
-                    <div id="ship"><img src="<?php echo get_template_directory_uri(); ?>/images/ship.svg" alt=""></div>
+                    <div id="ship"><img src="<?php echo get_template_directory_uri(); ?>/images/gov-and-military.svg" alt=""></div>
                     
                 </div>
             </div>
